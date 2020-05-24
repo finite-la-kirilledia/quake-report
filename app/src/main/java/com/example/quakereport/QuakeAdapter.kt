@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.quake_list_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<QuakeAdapter.QuakeViewHolder>() {
 
@@ -28,8 +30,10 @@ class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<Quake
         itemView.magnitude.text = item.magnitude.toString()
         itemView.location_offset
         itemView.primary_location.text = item.place
-        itemView.date
-        itemView.time.text = item.time.toString()
+
+        val datetime = Date(item.time)
+        itemView.date.text = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH).format(datetime)
+        itemView.time.text = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(datetime)
     }
 
     class QuakeViewHolder(view: View) : RecyclerView.ViewHolder(view) {

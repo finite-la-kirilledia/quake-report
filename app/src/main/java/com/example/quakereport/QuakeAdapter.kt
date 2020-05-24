@@ -28,8 +28,21 @@ class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<Quake
             ContextCompat.getColor(itemView.context, getMagnitudeColor(item.magnitude))
         )
         itemView.magnitude.text = item.magnitude.toString()
-        itemView.location_offset
-        itemView.primary_location.text = item.place
+
+        val originalLocation = item.place
+        val locationSeparator = " of "
+        val locationOffset: String
+        val primaryLocation: String
+        if (originalLocation.contains(locationSeparator)) {
+            val parts = originalLocation.split(locationSeparator)
+            locationOffset = parts[0] + locationSeparator
+            primaryLocation = parts[1]
+        } else {
+            locationOffset = "Near the"
+            primaryLocation = originalLocation
+        }
+        itemView.location_offset.text = locationOffset
+        itemView.primary_location.text = primaryLocation
 
         val datetime = Date(item.time)
         itemView.date.text = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH).format(datetime)

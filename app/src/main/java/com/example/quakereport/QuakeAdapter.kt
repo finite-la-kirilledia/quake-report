@@ -15,8 +15,7 @@ class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<Quake
     override fun getItemCount() = quakes.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuakeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.quake_list_item, parent, false)
-        return QuakeViewHolder(view)
+        return QuakeViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: QuakeViewHolder, position: Int) {
@@ -24,7 +23,7 @@ class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<Quake
         holder.bind(item)
     }
 
-    class QuakeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class QuakeViewHolder private constructor(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Quake) {
             DrawableCompat.setTint(
@@ -51,6 +50,13 @@ class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<Quake
             val datetime = Date(item.time)
             itemView.date.text = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH).format(datetime)
             itemView.time.text = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(datetime)
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): QuakeViewHolder {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.quake_list_item, parent, false)
+                return QuakeViewHolder(view)
+            }
         }
 
         private fun getMagnitudeColor(magnitude: Double): Int {

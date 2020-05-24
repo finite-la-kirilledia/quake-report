@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val quakes = listOf(
-        Quake(1.8, "115km NNE of Arctic Village, Alaska", 1590316940836),
+        Quake(1.83, "115km NNE of Arctic Village, Alaska", 1590316940836),
         Quake(6.4, "66km SE of Hawthorne, Nevada", 1590316886670),
         Quake(5.8, "8km E of Pahala, Hawaii", 1590316484080),
         Quake(7.7, "67km W of Tonopah, Nevada", 1590316469620),

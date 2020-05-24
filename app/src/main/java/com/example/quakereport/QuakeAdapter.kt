@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.quake_list_item.view.*
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,7 +31,7 @@ class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<Quake
                 DrawableCompat.wrap(itemView.magnitude.background),
                 ContextCompat.getColor(itemView.context, getMagnitudeColor(item.magnitude))
             )
-            itemView.magnitude.text = item.magnitude.toString()
+            itemView.magnitude.text = DecimalFormat("0.0").format(item.magnitude).toString()
 
             val originalLocation = item.place
             val locationSeparator = " of "

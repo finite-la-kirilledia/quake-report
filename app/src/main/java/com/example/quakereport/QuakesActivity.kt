@@ -3,9 +3,9 @@ package com.example.quakereport
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_quakes.*
 
-class MainActivity : AppCompatActivity() {
+class QuakesActivity : AppCompatActivity() {
 
     val quakes = listOf(
         Quake(1.83, "115km NNE of Arctic Village, Alaska", 1590316940836),
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_quakes)
 
         quakes_recycler_view.apply {
             setHasFixedSize(true)

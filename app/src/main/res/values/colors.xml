@@ -3,4 +3,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="textColorQuakeDetails">#B4BAC0</color>
+    <color name="textColorQuakeLocation">#2B3D4D</color>
 </resources>

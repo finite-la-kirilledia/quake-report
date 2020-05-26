@@ -12,7 +12,13 @@ import java.text.DecimalFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
 
-class QuakeAdapter(private val quakes: List<Quake>) : RecyclerView.Adapter<QuakeAdapter.QuakeViewHolder>() {
+class QuakeAdapter() : RecyclerView.Adapter<QuakeAdapter.QuakeViewHolder>() {
+
+    var quakes: List<Quake> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun getItemCount() = quakes.size
 

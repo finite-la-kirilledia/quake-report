@@ -13,7 +13,8 @@ interface QuakeApiService {
 
     @GET("query")
     fun getUsgsResponse(
-        @Query("minmag") minmag: Int = 1,
+        @Query("minmag") minmag: Int = 0,
+        @Query("limit") limit: Int = 100,
         @Query("format") format: String = "geojson"
     ): Deferred<UsgsResponse>
 }
